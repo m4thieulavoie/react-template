@@ -1,23 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { applyMiddleware, createStore } from "redux";
-import type { Action } from "redux";
 import { Provider } from "react-redux";
 import "./index.scss";
 import App from "./App/App";
-import rootReducer from "./reducers";
 import reportWebVitals from "./reportWebVitals";
-
-const middlewareExample =
-  (storeAPI: any) => (next: Function) => (action: Action) => {
-    // Do something in here, when each action is dispatched
-    console.warn("in middlewareExample", { storeAPI, action });
-
-    return next(action);
-  };
-
-const middlewareEnhancer = applyMiddleware(middlewareExample);
-const store = createStore(rootReducer, middlewareEnhancer);
+import store from "./store";
 
 ReactDOM.render(
   <React.StrictMode>
